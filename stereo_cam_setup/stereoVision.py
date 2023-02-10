@@ -9,16 +9,19 @@ import triangulation as tri
 import calibration
 
 import mediapipe as mp
-mp_draw=mp.solutions.drawing_utils
-
-cap_right=cv2.VideoCapture(0, cv2.CAP_DSHOW)
-cap_left=cv2.VideoCapture(0, cv2.CAP_DSHOW)
+import time
 
 mp_facedetector=mp.solutions.face_detection
+mp_draw=mp.solutions.drawing_utils
+
+cap_right=cv2.VideoCapture(1, cv2.CAP_DSHOW)
+cap_left=cv2.VideoCapture(2, cv2.CAP_DSHOW)
+
+# mp_facedetector=mp.solutions.face_detection
 frame_rate=30
-B=9
-f=8
-alpha=56.6
+B=25# subject to change
+f=8#subject to change
+alpha=50.6
 
 with mp_facedetector.FaceDetection(min_detection_confidence=0.7) as face_detection:
 
@@ -99,7 +102,6 @@ with mp_facedetector.FaceDetection(min_detection_confidence=0.7) as face_detecti
 
 
 
-            # If no ball can be caught in one camera show text "TRACKING LOST"
             if not results_right.detections or not results_left.detections:
                 cv2.putText(frame_right, "TRACKING LOST", (75,50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255),2)
                 cv2.putText(frame_left, "TRACKING LOST", (75,50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255),2)

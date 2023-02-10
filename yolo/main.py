@@ -19,7 +19,7 @@ with open('yolov4-3.2.0/classes.txt','r') as file_object:
 
 print(classes)
 
-cap=cv2.VideoCapture(0)
+cap=cv2.VideoCapture(1)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1080)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
 
